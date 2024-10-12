@@ -1,2 +1,67 @@
 // For information on how to create your own theme, please see:
 // http://ionicframework.com/docs/theming/
+:root {
+  --ion-color-rosado: #e2bbe9;
+  --ion-color-rosado-rgb: 226, 187, 233;
+  --ion-color-rosado-contrast: #000000;
+  --ion-color-rosado-contrast-rgb: 0, 0, 0;
+  --ion-color-rosado-shade: #c7a5cd;
+  --ion-color-rosado-tint: #e5c2eb;
+
+  --ion-color-morado: #9b86bd;
+  --ion-color-morado-rgb: 155, 134, 189;
+  --ion-color-morado-contrast: #000000;
+  --ion-color-morado-contrast-rgb: 0, 0, 0;
+  --ion-color-morado-shade: #8876a6;
+  --ion-color-morado-tint: #a592c4;
+
+  --ion-color-morado-50: #7776b3;
+  --ion-color-morado-50-rgb: 119, 118, 179;
+  --ion-color-morado-50-contrast: #000000;
+  --ion-color-morado-50-contrast-rgb: 0, 0, 0;
+  --ion-color-morado-50-shade: #69689e;
+  --ion-color-morado-50-tint: #8584bb;
+
+  --ion-color-morado-100: #5a639c;
+  --ion-color-morado-100-rgb: 90, 99, 156;
+  --ion-color-morado-100-contrast: #ffffff;
+  --ion-color-morado-100-contrast-rgb: 255, 255, 255;
+  --ion-color-morado-100-shade: #4f5789;
+  --ion-color-morado-100-tint: #6b73a6;
+}
+
+.ion-color-rosado {
+  --ion-color-base: var(--ion-color-rosado);
+  --ion-color-base-rgb: var(--ion-color-rosado-rgb);
+  --ion-color-contrast: var(--ion-color-rosado-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-rosado-contrast-rgb);
+  --ion-color-shade: var(--ion-color-rosado-shade);
+  --ion-color-tint: var(--ion-color-rosado-tint);
+}
+
+.ion-color-morado {
+  --ion-color-base: var(--ion-color-morado);
+  --ion-color-base-rgb: var(--ion-color-morado-rgb);
+  --ion-color-contrast: var(--ion-color-morado-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-morado-contrast-rgb);
+  --ion-color-shade: var(--ion-color-morado-shade);
+  --ion-color-tint: var(--ion-color-morado-tint);
+}
+
+.ion-color-morado-50 {
+  --ion-color-base: var(--ion-color-morado-50);
+  --ion-color-base-rgb: var(--ion-color-morado-50-rgb);
+  --ion-color-contrast: var(--ion-color-morado-50-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-morado-50-contrast-rgb);
+  --ion-color-shade: var(--ion-color-morado-50-shade);
+  --ion-color-tint: var(--ion-color-morado-50-tint);
+}
+
+.ion-color-morado-100 {
+  --ion-color-base: var(--ion-color-morado-100);
+  --ion-color-base-rgb: var(--ion-color-morado-100-rgb);
+  --ion-color-contrast: var(--ion-color-morado-100-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-morado-100-contrast-rgb);
+  --ion-color-shade: var(--ion-color-morado-100-shade);
+  --ion-color-tint: var(--ion-color-morado-100-tint);
+}

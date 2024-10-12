@@ -25,3 +25,27 @@
 #container a {
   text-decoration: none;
 }
+
+ion-footer {
+  ion-toolbar.tabs {
+    background-color: var(--ion-color-primary);
+    height: 55px;
+    width: 70%;
+    border-radius: 500px;
+    margin: 0 auto;
+
+    ion-buttons {
+      display: flex;
+      justify-content: space-around !important;
+
+      ion-button {
+        color: var(--ion-color-morado-100);
+        &.bg-rosado {
+          color: var(--ion-color-light);
+          background-color: var(--ion-color-morado-50) !important;
+          border-radius: 50%;
+        }
+      }
+    }
+  }
+}
