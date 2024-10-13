@@ -1,38 +1,10 @@
-#container {
-  text-align: center;
-
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
-}
-
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
-}
-
-#container a {
-  text-decoration: none;
-}
-
 ion-footer {
   ion-toolbar.tabs {
-    background-color: var(--ion-color-primary);
-    height: 55px;
-    width: 70%;
+    height: 60px;
+    width: 55%;
     border-radius: 500px;
     margin: 0 auto;
+    display: flex;
 
     ion-buttons {
       display: flex;
@@ -44,6 +16,9 @@ ion-footer {
           color: var(--ion-color-light);
           background-color: var(--ion-color-morado-50) !important;
           border-radius: 50%;
+        }
+        .icofont-1x {
+          font-size: 1rem;
         }
       }
     }

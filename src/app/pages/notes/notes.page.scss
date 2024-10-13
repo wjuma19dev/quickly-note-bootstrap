@@ -1,0 +1,21 @@
+.badge {
+  height: 38px;
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(155 134 189 / 26%);
+  border-radius: 10px;
+
+  i {
+    padding: 0 10px 0 0;
+    font-size: 1.1rem !important;
+  }
+}
+
+ion-button {
+  i {
+    display: flex;
+    font-size: 1.1rem !important;
+  }
+}

@@ -1,0 +1,40 @@
+<app-header title="mis notas" />
+
+<ion-content [fullscreen]="true" class="ion-padding" color="light">
+  <div class="container">
+    <div class="row mt-3">
+      <div class="col-10">
+        <ion-searchbar
+          class="barlow-regular ion-no-padding"
+          placeholder="Buscar aqui ..."
+        ></ion-searchbar>
+      </div>
+      <div class="col-2">
+        <ion-button shape="round" color="morado-100">
+          <i slot="icon-only" class="fi fi-rr-align-left icofont-2x d-flex"></i>
+        </ion-button>
+      </div>
+    </div>
+
+    <div class="row mt-5">
+      <div class="col-10">
+        <div class="badge text-muted">
+          <i class="fi fi-rr-folder"></i>
+          All
+        </div>
+      </div>
+      <div class="col-2">
+        <ion-button shape="round" color="morado-100">
+          <i
+            slot="icon-only"
+            class="fi fi-rr-sort-amount-down-alt icofont-2x d-flex"
+          ></i>
+        </ion-button>
+      </div>
+    </div>
+
+    <app-list-notes [notas]="notas()" />
+  </div>
+</ion-content>
+
+<app-tabs />

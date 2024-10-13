@@ -1,0 +1,17 @@
+ion-header {
+	ion-toolbar {
+		padding-top: 50px;
+		padding-bottom: 10px;
+		ion-title {
+			font-size: 1.8rem;
+			text-transform: capitalize;
+
+			p {
+				font-size: 1rem;
+			}
+		}
+		ion-avatar {
+			--border-radius: 4px;
+		}
+	}
+}

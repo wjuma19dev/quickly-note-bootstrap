@@ -35,3 +35,66 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import "@ionic/angular/css/palettes/dark.system.css";
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+small,
+span,
+ion-title,
+ion-label,
+strong {
+	font-family: "Barlow", sans-serif !important;
+	font-weight: 400;
+	font-style: normal;
+}
+
+.barlow-regular {
+	font-family: "Barlow", sans-serif;
+	font-weight: 400;
+	font-style: normal;
+}
+
+.barlow-bold {
+	font-family: "Barlow", sans-serif;
+	font-weight: 700;
+	font-style: normal;
+}
+
+.barlow-black {
+	font-family: "Barlow", sans-serif;
+	font-weight: 900;
+	font-style: normal;
+}
+
+.searchbar-input.sc-ion-searchbar-md {
+	border-radius: 10px !important;
+	// border-color: none;
+	background-color: rgb(155 134 189 / 26%);
+	box-shadow: none;
+}
+
+i {
+	display: flex;
+	font-size: 1.3rem;
+}
+
+/**
+ 	Note card
+ */
+
+.card {
+	border: none;
+	border-radius: 20px;
+	background-color: #7776b3cc;
+	color: var(--ion-color-light);
+
+	.card-title {
+		margin-top: 0;
+		font-weight: 700;
+	}
+}
