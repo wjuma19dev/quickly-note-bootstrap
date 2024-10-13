@@ -98,3 +98,25 @@ i {
 		font-weight: 700;
 	}
 }
+
+/**
+ * Inpu
+ */
+.has-focus.sc-ion-textarea-md-h textarea.sc-ion-textarea-md,
+.has-focus.sc-ion-input-md-h input.sc-ion-input-md {
+	caret-color: var(--ion-color-morado-100);
+}
+
+/**
+ * Textarea
+ */
+
+textarea {
+	height: 400px !important;
+}
+
+/**
+ * Toas
+ */
+.toast-wrapper {
+}

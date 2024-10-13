@@ -1,10 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, inject } from "@angular/core";
+import { NoteService } from "./pages/notes/note.service";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: 'app.component.html',
-  styleUrls: ['app.component.scss'],
+  selector: "app-root",
+  templateUrl: "app.component.html",
+  styleUrls: ["app.component.scss"],
 })
 export class AppComponent {
-  constructor() {}
+  constructor() {
+    inject(NoteService).inicializarNotas();
+  }
 }

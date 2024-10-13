@@ -1,0 +1,35 @@
+ion-toolbar {
+	padding-top: 50px !important;
+}
+ion-button {
+	background-color: rgb(119 118 179 / 24%);
+	border-radius: 50%;
+}
+
+.titulo {
+	font-size: 4rem;
+	font-weight: 400;
+	font-family: "Barlow", sans-serif !important;
+}
+
+.contenido,
+textarea {
+	font-size: 1.5rem;
+	height: 400px !important;
+	font-family: "Barlow", sans-serif !important;
+}
+
+.badge {
+	height: 38px;
+	width: 100px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: rgb(155 134 189 / 26%);
+	border-radius: 10px;
+
+	i {
+		padding: 0 10px 0 0;
+		font-size: 1.1rem !important;
+	}
+}

@@ -28,6 +28,46 @@
   --ion-color-morado-100-contrast-rgb: 255, 255, 255;
   --ion-color-morado-100-shade: #4f5789;
   --ion-color-morado-100-tint: #6b73a6;
+
+  // Alert danger
+  --ion-color-alert-danger: #f8d7da;
+  --ion-color-alert-danger-rgb: 254, 244, 246;
+  --ion-color-alert-danger-contrast: #842029;
+  --ion-color-alert-danger-contrast-rgb: 0, 0, 0;
+  --ion-color-alert-danger-shade: #e0d7d8;
+  --ion-color-alert-danger-tint: #fef5f7;
+
+  // Alert success
+  --ion-color-alert-success: #d1e7dd;
+  --ion-color-alert-success-rgb: 209, 231, 221;
+  --ion-color-alert-success-contrast: #0f5132;
+  --ion-color-alert-success-contrast-rgb: 0, 0, 0;
+  --ion-color-alert-success-shade: #b8cbc2;
+  --ion-color-alert-success-tint: #d6e9e0;
+
+  // Alert simple-dark
+  --ion-color-alert-simple-dark: #d3d3d4;
+  --ion-color-alert-simple-dark-rgb: 211, 211, 212;
+  --ion-color-alert-simple-dark-contrast: #141619;
+  --ion-color-alert-simple-dark-contrast-rgb: 0, 0, 0;
+  --ion-color-alert-simple-dark-shade: #bababb;
+  --ion-color-alert-simple-dark-tint: #d7d7d8;
+
+  // Alert warning
+  --ion-color-alert-warning: #fff3cd;
+  --ion-color-alert-warning-rgb: 255, 243, 205;
+  --ion-color-alert-warning-contrast: #664d03;
+  --ion-color-alert-warning-contrast-rgb: 0, 0, 0;
+  --ion-color-alert-warning-shade: #e0d6b4;
+  --ion-color-alert-warning-tint: #fff4d2;
+
+  // Alert primary
+  --ion-color-alert-primary: #cfe2ff;
+  --ion-color-alert-primary-rgb: 207, 226, 255;
+  --ion-color-alert-primary-contrast: #084298;
+  --ion-color-alert-primary-contrast-rgb: 0, 0, 0;
+  --ion-color-alert-primary-shade: #b6c7e0;
+  --ion-color-alert-primary-tint: #d4e5ff;
 }
 
 .ion-color-rosado {
@@ -64,4 +104,54 @@
   --ion-color-contrast-rgb: var(--ion-color-morado-100-contrast-rgb);
   --ion-color-shade: var(--ion-color-morado-100-shade);
   --ion-color-tint: var(--ion-color-morado-100-tint);
+}
+
+.ion-color-alert-danger {
+  --ion-color-base: var(--ion-color-alert-danger);
+  --ion-color-base-rgb: var(--ion-color-alert-danger-rgb);
+  --ion-color-contrast: var(--ion-color-alert-danger-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-alert-danger-contrast-rgb);
+  --ion-color-shade: var(--ion-color-alert-danger-shade);
+  --ion-color-tint: var(--ion-color-alert-danger-tint);
+  border-color: #f5c2c7 !important;
+}
+
+.ion-color-alert-success {
+  --ion-color-base: var(--ion-color-alert-success);
+  --ion-color-base-rgb: var(--ion-color-alert-success-rgb);
+  --ion-color-contrast: var(--ion-color-alert-success-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-alert-success-contrast-rgb);
+  --ion-color-shade: var(--ion-color-alert-success-shade);
+  --ion-color-tint: var(--ion-color-alert-success-tint);
+  border-color: #badbcc !important;
+}
+
+.ion-color-alert-simple-dark {
+  --ion-color-base: var(--ion-color-alert-simple-dark);
+  --ion-color-base-rgb: var(--ion-color-alert-simple-dark-rgb);
+  --ion-color-contrast: var(--ion-color-alert-simple-dark-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-alert-simple-dark-contrast-rgb);
+  --ion-color-shade: var(--ion-color-alert-simple-dark-shade);
+  --ion-color-tint: var(--ion-color-alert-simple-dark-tint);
+  border-color: #bcbebf !important;
+}
+
+.ion-color-alert-warning {
+  --ion-color-base: var(--ion-color-alert-warning);
+  --ion-color-base-rgb: var(--ion-color-alert-warning-rgb);
+  --ion-color-contrast: var(--ion-color-alert-warning-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-alert-warning-contrast-rgb);
+  --ion-color-shade: var(--ion-color-alert-warning-shade);
+  --ion-color-tint: var(--ion-color-alert-warning-tint);
+  border-color: #ffecb5 !important;
+}
+
+.ion-color-alert-primary {
+  --ion-color-base: var(--ion-color-alert-primary);
+  --ion-color-base-rgb: var(--ion-color-alert-primary-rgb);
+  --ion-color-contrast: var(--ion-color-alert-primary-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-alert-primary-contrast-rgb);
+  --ion-color-shade: var(--ion-color-alert-primary-shade);
+  --ion-color-tint: var(--ion-color-alert-primary-tint);
+  border-color: #b6d4fe !important;
 }

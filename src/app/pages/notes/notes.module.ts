@@ -10,6 +10,7 @@ import { NotesPage } from "./notes.page";
 import { ComponentsModule } from "src/app/components/components.module";
 import { ListNotesComponent } from "./list-notes/list-notes.component";
 import { ItemNoteComponent } from "./item-note/item-note.component";
+import { NewNoteComponent } from "./new-note/new-note.component";
 
 @NgModule({
   imports: [
@@ -17,8 +18,14 @@ import { ItemNoteComponent } from "./item-note/item-note.component";
     FormsModule,
     IonicModule,
     NotesPageRoutingModule,
+
     ComponentsModule,
   ],
-  declarations: [NotesPage, ListNotesComponent, ItemNoteComponent],
+  declarations: [
+    NotesPage,
+    ListNotesComponent,
+    // NewNoteComponent,
+    ItemNoteComponent,
+  ],
 })
 export class NotesPageModule {}

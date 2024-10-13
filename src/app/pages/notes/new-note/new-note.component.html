@@ -1,3 +1,54 @@
-<p>
-  new-note works!
-</p>
+<ion-header class="ion-no-border">
+  <ion-toolbar class="container" color="light">
+    <ion-buttons slot="start">
+      <ion-button color="morado-100" (click)="cerrarModal()">
+        <i slot="icon-only" class="fi fi-rr-angle-left d-flex"></i>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <!--       <ion-button color="morado-100">
+        <i slot="icon-only" class="fi fi-rr-menu-dots d-flex"></i>
+      </ion-button> -->
+      <ion-button color="morado-100" (click)="guardar()">
+        <i slot="icon-only" class="fi fi-rr-disk d-flex"></i>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding" color="light">
+  <!-- Fecha de creacion de la nota -->
+  <ion-item lines="none" color="light">
+    <ion-label class="text-muted">{{
+      notaObj.creado | date: "medium"
+    }}</ion-label>
+  </ion-item>
+  <!-- // fin -->
+  <!-- Titulo  -->
+  <ion-item lines="none" color="light">
+    <ion-input
+      [(ngModel)]="notaObj.titulo"
+      placeholder="Sin titulo"
+      class="titulo"
+    ></ion-input>
+  </ion-item>
+  <!-- // Fin -->
+  <!-- Categoria -->
+  <div class="categoria my-4 px-3">
+    <div class="badge text-muted">
+      <i class="fi fi-rr-folder"></i>
+      All
+    </div>
+  </div>
+  <!-- // Fin -->
+
+  <!-- Contenido -->
+  <ion-item lines="none" color="light">
+    <ion-textarea
+      [(ngModel)]="notaObj.contenido"
+      class="contenido"
+      placeholder="Empieza a escribir aqui"
+    ></ion-textarea>
+  </ion-item>
+  <!-- // Fin -->
+</ion-content>
