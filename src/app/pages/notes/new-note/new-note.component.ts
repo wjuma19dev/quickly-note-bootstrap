@@ -1,62 +1,98 @@
-import { Component, ViewChild, inject } from "@angular/core";
+import {
+  AfterContentInit,
+  Component,
+  Input,
+  OnInit,
+  ViewChild,
+  inject,
+  input,
+} from "@angular/core";
 import { Nota } from "../note.model";
-import { IonInput, ModalController, ToastController } from "@ionic/angular";
+import {
+  IonInput,
+  ModalController,
+  PopoverController,
+  ToastController,
+} from "@ionic/angular";
 import { NoteService } from "../note.service";
+import { MenuNoteComponent } from "src/app/components/menu-note/menu-note.component";
+import { ToastService } from "src/app/services/toast.service";
 
 @Component({
   selector: "app-new-note",
   templateUrl: "./new-note.component.html",
   styleUrls: ["./new-note.component.scss"],
 })
-export class NewNoteComponent {
-  notaService: NoteService = inject(NoteService);
+export class NewNoteComponent implements OnInit, AfterContentInit {
+  private _notaService: NoteService = inject(NoteService);
+
+  // Controladores
+  private _toastService: ToastService = inject(ToastService);
   toastCtrl: ToastController = inject(ToastController);
   modalCtrl: ModalController = inject(ModalController);
+  popoverCtrl: PopoverController = inject(PopoverController);
 
-  @ViewChild(IonInput) ionInput!: IonInput;
+  // Angular core
+  @ViewChild(IonInput, { static: true }) ionInput!: IonInput;
 
-  notaObj = {
-    titulo: "",
-    contenido: "",
-    creado: new Date(),
-  };
+  // Atributos
+  public nota!: Nota | undefined;
+  public estaGuardando: boolean = false;
+  @Input() noteId!: string;
+  @Input() editMode!: boolean;
 
-  async guardar() {
-    if (
-      this.notaObj.titulo.trim() === "" ||
-      this.notaObj.contenido.trim() === ""
-    ) {
-      this.ionInput.setFocus();
-      this.presentToas(
-        "alert-danger",
-        "bottom",
-        "Todos los campos son obligatorios",
+  ngAfterContentInit(): void {
+    if (!this.editMode) {
+      // Crear la nota automaticamente una vez entre el modal
+      const nota = new Nota("", "", new Date());
+      // Pasando la referencia de la nota creada al atributo nota
+      this.nota = nota;
+      // Guardar la nota
+      this._notaService.agregar(nota);
+      // Presentar toast informando al cliente que se ha creado la nota
+      this._toastService.presentToas(
+        "alert-success",
+        "top",
+        "Nota creada correctamente",
+        "checkmark-circle-outline",
       );
-      return;
+    } else {
+      this.nota = this._notaService
+        .notas()
+        .find((nota) => nota.id === this.noteId);
     }
-
-    const nota = new Nota(
-      this.notaObj.titulo,
-      this.notaObj.contenido,
-      this.notaObj.creado,
-    );
-    this.notaService.agregar(nota);
-    this.presentToas("alert-success", "bottom", "Nota creada correctamente");
   }
 
-  async presentToas(
-    color: string,
-    position: "top" | "middle" | "bottom",
-    message: string,
-  ) {
-    const toas = this.toastCtrl.create({
-      message,
-      duration: 2000,
-      color,
-      mode: "ios",
-      position,
+  ngOnInit(): void {}
+
+  // ngAfterContentInit(): void {
+  //   console.log(this.ionInput);
+  //   this.ionInput.setFocus();
+  // }
+
+  async actualizarNota(e: any) {
+    this.estaGuardando = true;
+    const name = e.target.name;
+    if (this.nota && name === "titulo") {
+      this.nota["titulo"] = e.target.value;
+    } else if (this.nota && name === "contenido") {
+      this.nota["contenido"] = e.target.value;
+    }
+    this._notaService.actualizar(this.nota);
+    setTimeout(() => (this.estaGuardando = false), 1000);
+  }
+
+  abrirMenu(e: Event) {
+    this.presentPopover(e);
+  }
+
+  async presentPopover(e: Event) {
+    const popover = await this.popoverCtrl.create({
+      component: MenuNoteComponent,
+      componentProps: { noteId: this.nota?.id },
+      event: e,
     });
-    (await toas).present();
+    await popover.present();
   }
 
   cerrarModal() {

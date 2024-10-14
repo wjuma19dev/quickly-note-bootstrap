@@ -6,11 +6,11 @@
       </ion-button>
     </ion-buttons>
     <ion-buttons slot="end">
-      <!--       <ion-button color="morado-100">
+      <ion-button class="refresh mx-3" [ngClass]="{ 'd-none': !estaGuardando }">
+        <i slot="icon-only" class="fi fi-rr-refresh d-flex text-muted"></i>
+      </ion-button>
+      <ion-button color="morado-100" (click)="abrirMenu($event)">
         <i slot="icon-only" class="fi fi-rr-menu-dots d-flex"></i>
-      </ion-button> -->
-      <ion-button color="morado-100" (click)="guardar()">
-        <i slot="icon-only" class="fi fi-rr-disk d-flex"></i>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
@@ -20,16 +20,18 @@
   <!-- Fecha de creacion de la nota -->
   <ion-item lines="none" color="light">
     <ion-label class="text-muted">{{
-      notaObj.creado | date: "medium"
+      nota?.creado | date: "medium"
     }}</ion-label>
   </ion-item>
   <!-- // fin -->
   <!-- Titulo  -->
   <ion-item lines="none" color="light">
     <ion-input
-      [(ngModel)]="notaObj.titulo"
+      name="titulo"
+      (keyup)="actualizarNota($event)"
       placeholder="Sin titulo"
       class="titulo"
+      [value]="nota?.titulo || !editMode ? nota?.titulo : 'Sin titulo'"
     ></ion-input>
   </ion-item>
   <!-- // Fin -->
@@ -45,9 +47,11 @@
   <!-- Contenido -->
   <ion-item lines="none" color="light">
     <ion-textarea
-      [(ngModel)]="notaObj.contenido"
+      name="contenido"
+      (keyup)="actualizarNota($event)"
       class="contenido"
       placeholder="Empieza a escribir aqui"
+      [value]="nota?.contenido || !editMode ? nota?.contenido : 'Sin contenido'"
     ></ion-textarea>
   </ion-item>
   <!-- // Fin -->

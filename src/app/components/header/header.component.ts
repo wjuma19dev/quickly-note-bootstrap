@@ -7,4 +7,5 @@ import { Component, input } from "@angular/core";
 })
 export class HeaderComponent {
   title = input.required<string>();
+  size = input.required<number>();
 }
