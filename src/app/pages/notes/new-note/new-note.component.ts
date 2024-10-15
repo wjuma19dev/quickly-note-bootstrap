@@ -35,6 +35,14 @@ export class NewNoteComponent implements OnInit, AfterContentInit {
   // Angular core
   @ViewChild(IonInput, { static: true }) ionInput!: IonInput;
 
+  // Select
+  customAlertOptions = {
+    header: "Carpeta",
+    subHeader: "Guarda tus notas etiquetadas",
+    message: "Selecciona una categoria",
+    translucent: true,
+  };
+
   // Atributos
   public nota!: Nota;
   public estaGuardando: boolean = false;
@@ -54,7 +62,7 @@ export class NewNoteComponent implements OnInit, AfterContentInit {
       // Presentar toast informando al cliente que se ha creado la nota
       this._toastService.presentToas(
         "alert-success",
-        "top",
+        "bottom",
         "Nota creada correctamente",
         "checkmark-circle-outline",
       );
@@ -94,6 +102,7 @@ export class NewNoteComponent implements OnInit, AfterContentInit {
     const popover = await this.popoverCtrl.create({
       component: MenuNoteComponent,
       componentProps: { noteId: this.nota?.id },
+      mode: "ios",
       event: e,
     });
     await popover.present();

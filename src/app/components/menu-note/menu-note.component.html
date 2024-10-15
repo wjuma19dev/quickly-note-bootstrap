@@ -1,4 +1,4 @@
-<ion-list>
+<ion-list color="morado">
   <ion-item detail lines="none">
     <i slot="start" class="fi fi-rr-thumbtack d-flex text-muted"></i>
     <ion-label class="text-muted">Anclar</ion-label>
@@ -6,7 +6,8 @@
   <ion-item lines="none">
     <i slot="start" class="fi fi-rr-lock d-flex text-muted"></i>
     <ion-label class="text-muted">Bloquear</ion-label>
-    <ion-toggle slot="end"></ion-toggle>
+    <!-- Checker bloquear -->
+    <app-checked-bloquear slot="end" />
   </ion-item>
   <ion-item detail lines="none">
     <i slot="start" class="fi fi-rr-redo d-flex text-muted"></i>
@@ -24,10 +25,6 @@
     <i slot="start" class="fi fi-rr-star d-flex text-muted"></i>
     <ion-label class="text-muted">Favorito</ion-label>
   </ion-item>
-  <!--   <ion-item detail>
-    <i slot="start" class="fi fi-rr-disk d-flex text-muted"></i>
-    <ion-label class="text-muted">Guardar</ion-label>
-  </ion-item> -->
   <ion-item detail lines="none" (click)="eliminarNota()">
     <i slot="start" class="fi fi-rr-trash d-flex rojo"></i>
     <ion-label class="rojo">Papelera</ion-label>

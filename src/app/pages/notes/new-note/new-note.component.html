@@ -1,4 +1,4 @@
-<ion-header class="ion-no-border">
+<!-- <ion-header class="ion-no-border">
   <ion-toolbar class="container" color="light">
     <ion-buttons slot="start">
       <ion-button color="morado-100" (click)="cerrarModal()">
@@ -11,6 +11,29 @@
       </ion-button>
       <ion-button color="morado-100" (click)="abrirMenu($event)">
         <i slot="icon-only" class="fi fi-rr-menu-dots d-flex"></i>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+ -->
+
+<ion-header [translucent]="false" class="ion-no-border" mode="md">
+  <ion-toolbar color="morado">
+    <ion-buttons slot="start">
+      <ion-button (click)="cerrarModal()">
+        <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{ selected ? "Editar" : "Crear" }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button class="refresh" [ngClass]="{ 'd-none': !estaGuardando }">
+        <i slot="icon-only" class="fi fi-rr-refresh d-flex text-muted"></i>
+      </ion-button>
+      <ion-button (click)="abrirMenu($event)">
+        <ion-icon
+          slot="icon-only"
+          name="ellipsis-horizontal-outline"
+        ></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
@@ -35,10 +58,26 @@
   <!-- // Fin -->
   <!-- Categoria -->
   <div class="categoria my-4 px-3">
-    <div class="badge text-muted">
+    <!--   <div class="badge text-muted">
       <i class="fi fi-rr-folder"></i>
       All
-    </div>
+    </div> -->
+    <ion-button color="alert-danger">
+      <!--      <i class="fi fi-rr-folder px-2"></i>
+      All -->
+      <i class="fi fi-rr-folder px-2"></i>
+      <ion-select
+        [interfaceOptions]="customAlertOptions"
+        interface="alert"
+        aria-label="fruit"
+        value="all"
+        mode="ios"
+      >
+        <ion-select-option value="all">All</ion-select-option>
+        <ion-select-option value="work">Work</ion-select-option>
+        <ion-select-option value="personal">Personal</ion-select-option>
+      </ion-select>
+    </ion-button>
   </div>
   <!-- // Fin -->
 
