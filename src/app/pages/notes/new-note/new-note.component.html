@@ -19,9 +19,7 @@
 <ion-content [fullscreen]="true" class="ion-padding" color="light">
   <!-- Fecha de creacion de la nota -->
   <ion-item lines="none" color="light">
-    <ion-label class="text-muted">{{
-      nota?.creado | date: "medium"
-    }}</ion-label>
+    <ion-label class="text-muted">{{ nota.creado | date: "medium" }}</ion-label>
   </ion-item>
   <!-- // fin -->
   <!-- Titulo  -->
@@ -31,7 +29,7 @@
       (keyup)="actualizarNota($event)"
       placeholder="Sin titulo"
       class="titulo"
-      [value]="nota?.titulo || !editMode ? nota?.titulo : 'Sin titulo'"
+      [(ngModel)]="nota.titulo"
     ></ion-input>
   </ion-item>
   <!-- // Fin -->
@@ -51,7 +49,7 @@
       (keyup)="actualizarNota($event)"
       class="contenido"
       placeholder="Empieza a escribir aqui"
-      [value]="nota?.contenido || !editMode ? nota?.contenido : 'Sin contenido'"
+      [(ngModel)]="nota.contenido"
     ></ion-textarea>
   </ion-item>
   <!-- // Fin -->

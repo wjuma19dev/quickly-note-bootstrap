@@ -19,7 +19,7 @@ export class ItemNoteComponent implements OnInit {
   async editarNota() {
     const modal = await this._modalCtrl.create({
       component: NewNoteComponent,
-      componentProps: { noteId: this.nota().id, editMode: true },
+      componentProps: { selected: this.nota(), editMode: true },
     });
     await modal.present();
   }

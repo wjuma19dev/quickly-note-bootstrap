@@ -4,9 +4,15 @@
       <div class="col-8">
         <ion-title>
           <h1 class="m-0">{{ title() }}</h1>
-          <p class="m-0 lead text-muted">
-            <span>{{ size() }}</span> notas
-          </p>
+          @if (size()) {
+            <p class="m-0 lead text-muted">
+              <span>{{ size() }}</span> notas
+            </p>
+          } @else {
+            <p class="m-0 lead text-muted">
+              <span class="text-morado fw-bold">Wilson's</span> area de trabajo
+            </p>
+          }
         </ion-title>
       </div>
       <div class="col-4 d-flex justify-content-end">

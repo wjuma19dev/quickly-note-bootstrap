@@ -36,12 +36,14 @@ export class NewNoteComponent implements OnInit, AfterContentInit {
   @ViewChild(IonInput, { static: true }) ionInput!: IonInput;
 
   // Atributos
-  public nota!: Nota | undefined;
+  public nota!: Nota;
   public estaGuardando: boolean = false;
-  @Input() noteId!: string;
+  @Input() selected!: Nota;
   @Input() editMode!: boolean;
 
-  ngAfterContentInit(): void {
+  ngAfterContentInit(): void {}
+
+  ngOnInit(): void {
     if (!this.editMode) {
       // Crear la nota automaticamente una vez entre el modal
       const nota = new Nota("", "", new Date());
@@ -57,19 +59,20 @@ export class NewNoteComponent implements OnInit, AfterContentInit {
         "checkmark-circle-outline",
       );
     } else {
-      this.nota = this._notaService
-        .notas()
-        .find((nota) => nota.id === this.noteId);
+      // Setear nota aqui
+      this.nota = this.selected;
     }
   }
-
-  ngOnInit(): void {}
 
   // ngAfterContentInit(): void {
   //   console.log(this.ionInput);
   //   this.ionInput.setFocus();
   // }
 
+  /**
+   * [actualizarNota description]
+   * Una vez creada la nota por defecto con valores predeterminados de sin titulo y sin contenido, esta funcion actualiza la nota creada con los valores correspondiente segun evento keyup del input y el textarea.
+   */
   async actualizarNota(e: any) {
     this.estaGuardando = true;
     const name = e.target.name;
@@ -78,6 +81,7 @@ export class NewNoteComponent implements OnInit, AfterContentInit {
     } else if (this.nota && name === "contenido") {
       this.nota["contenido"] = e.target.value;
     }
+
     this._notaService.actualizar(this.nota);
     setTimeout(() => (this.estaGuardando = false), 1000);
   }
