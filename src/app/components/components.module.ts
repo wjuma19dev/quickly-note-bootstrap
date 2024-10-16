@@ -1,12 +1,13 @@
-import { NgModule } from "@angular/core";
-import { CommonModule } from "@angular/common";
-import { IonicModule } from "@ionic/angular";
-import { TabsComponent } from "./tabs/tabs.component";
-import { HeaderComponent } from "./header/header.component";
-import { MenuNoteComponent } from "./menu-note/menu-note.component";
-import { RouterLink } from "@angular/router";
-import { BotonSalirComponent } from "./boton-salir/boton-salir.component";
-import { CheckedBloquearComponent } from "./checked-bloquear/checked-bloquear.component";
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { IonicModule } from '@ionic/angular';
+import { TabsComponent } from './tabs/tabs.component';
+import { HeaderComponent } from './header/header.component';
+import { MenuNoteComponent } from './menu-note/menu-note.component';
+import { RouterLink } from '@angular/router';
+import { BotonSalirComponent } from './boton-salir/boton-salir.component';
+import { CheckedBloquearComponent } from './checked-bloquear/checked-bloquear.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { CheckedBloquearComponent } from "./checked-bloquear/checked-bloquear.co
     MenuNoteComponent,
     BotonSalirComponent,
     CheckedBloquearComponent,
+    NavbarComponent,
   ],
   imports: [CommonModule, IonicModule, RouterLink],
   exports: [
@@ -22,6 +24,7 @@ import { CheckedBloquearComponent } from "./checked-bloquear/checked-bloquear.co
     HeaderComponent,
     BotonSalirComponent,
     CheckedBloquearComponent,
+    NavbarComponent,
   ],
 })
 export class ComponentsModule {}

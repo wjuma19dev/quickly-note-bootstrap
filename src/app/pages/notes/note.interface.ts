@@ -1,8 +1,8 @@
 export interface INota {
-	id: string;
-	usuario: string;
-	titulo: string;
-	contenido: string;
-	creado: Date;
-	basurero: boolean;
+  id: string;
+  usuario: string;
+  titulo: string;
+  contenido: string;
+  creado: Date;
+  papelera: boolean;
 }

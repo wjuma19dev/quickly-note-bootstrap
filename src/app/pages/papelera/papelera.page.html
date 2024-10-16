@@ -1,0 +1,11 @@
+<app-navbar titulo="papelera" />
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-header class="shadow-none" collapse="condense">
+    <ion-toolbar color="morado">
+      <ion-title size="large" class="text-capitalize">papelera</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <app-list-notes [notas]="notas()" />
+</ion-content>

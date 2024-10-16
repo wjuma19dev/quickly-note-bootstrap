@@ -1,22 +1,3 @@
-<!-- <ion-header class="ion-no-border">
-  <ion-toolbar class="container" color="light">
-    <ion-buttons slot="start">
-      <ion-button color="morado-100" (click)="cerrarModal()">
-        <i slot="icon-only" class="fi fi-rr-angle-left d-flex"></i>
-      </ion-button>
-    </ion-buttons>
-    <ion-buttons slot="end">
-      <ion-button class="refresh mx-3" [ngClass]="{ 'd-none': !estaGuardando }">
-        <i slot="icon-only" class="fi fi-rr-refresh d-flex text-muted"></i>
-      </ion-button>
-      <ion-button color="morado-100" (click)="abrirMenu($event)">
-        <i slot="icon-only" class="fi fi-rr-menu-dots d-flex"></i>
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
- -->
-
 <ion-header [translucent]="false" class="ion-no-border" mode="md">
   <ion-toolbar color="morado">
     <ion-buttons slot="start">
@@ -42,7 +23,9 @@
 <ion-content [fullscreen]="true" class="ion-padding" color="light">
   <!-- Fecha de creacion de la nota -->
   <ion-item lines="none" color="light">
-    <ion-label class="text-muted">{{ nota.creado | date: "medium" }}</ion-label>
+    <ion-label class="text-muted">{{
+      nota.creado | date : "medium"
+    }}</ion-label>
   </ion-item>
   <!-- // fin -->
   <!-- Titulo  -->

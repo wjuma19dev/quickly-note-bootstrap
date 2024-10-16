@@ -15,7 +15,11 @@ const routes: Routes = [
   {
     path: 'settings',
     loadChildren: () => import('./pages/settings/settings.module').then( m => m.SettingsPageModule)
+  },  {
+    path: 'papelera',
+    loadChildren: () => import('./pages/papelera/papelera.module').then( m => m.PapeleraPageModule)
   },
+
 ];
 
 @NgModule({

@@ -1,29 +1,28 @@
 import {
-  AfterContentInit,
   Component,
   Input,
   OnInit,
   ViewChild,
   inject,
   input,
-} from "@angular/core";
-import { Nota } from "../note.model";
+} from '@angular/core';
+import { Nota } from '../note.model';
 import {
   IonInput,
   ModalController,
   PopoverController,
   ToastController,
-} from "@ionic/angular";
-import { NoteService } from "../note.service";
-import { MenuNoteComponent } from "src/app/components/menu-note/menu-note.component";
-import { ToastService } from "src/app/services/toast.service";
+} from '@ionic/angular';
+import { NoteService } from '../note.service';
+import { MenuNoteComponent } from 'src/app/components/menu-note/menu-note.component';
+import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
-  selector: "app-new-note",
-  templateUrl: "./new-note.component.html",
-  styleUrls: ["./new-note.component.scss"],
+  selector: 'app-new-note',
+  templateUrl: './new-note.component.html',
+  styleUrls: ['./new-note.component.scss'],
 })
-export class NewNoteComponent implements OnInit, AfterContentInit {
+export class NewNoteComponent implements OnInit {
   private _notaService: NoteService = inject(NoteService);
 
   // Controladores
@@ -37,9 +36,9 @@ export class NewNoteComponent implements OnInit, AfterContentInit {
 
   // Select
   customAlertOptions = {
-    header: "Carpeta",
-    subHeader: "Guarda tus notas etiquetadas",
-    message: "Selecciona una categoria",
+    header: 'Carpeta',
+    subHeader: 'Guarda tus notas etiquetadas',
+    message: 'Selecciona una categoria',
     translucent: true,
   };
 
@@ -49,33 +48,26 @@ export class NewNoteComponent implements OnInit, AfterContentInit {
   @Input() selected!: Nota;
   @Input() editMode!: boolean;
 
-  ngAfterContentInit(): void {}
-
   ngOnInit(): void {
     if (!this.editMode) {
       // Crear la nota automaticamente una vez entre el modal
-      const nota = new Nota("", "", new Date());
+      const nota = new Nota('', '', new Date(), false);
       // Pasando la referencia de la nota creada al atributo nota
       this.nota = nota;
       // Guardar la nota
       this._notaService.agregar(nota);
       // Presentar toast informando al cliente que se ha creado la nota
       this._toastService.presentToas(
-        "alert-success",
-        "bottom",
-        "Nota creada correctamente",
-        "checkmark-circle-outline",
+        'alert-success',
+        'bottom',
+        'Nota creada correctamente',
+        'checkmark-circle-outline'
       );
     } else {
       // Setear nota aqui
       this.nota = this.selected;
     }
   }
-
-  // ngAfterContentInit(): void {
-  //   console.log(this.ionInput);
-  //   this.ionInput.setFocus();
-  // }
 
   /**
    * [actualizarNota description]
@@ -84,13 +76,15 @@ export class NewNoteComponent implements OnInit, AfterContentInit {
   async actualizarNota(e: any) {
     this.estaGuardando = true;
     const name = e.target.name;
-    if (this.nota && name === "titulo") {
-      this.nota["titulo"] = e.target.value;
-    } else if (this.nota && name === "contenido") {
-      this.nota["contenido"] = e.target.value;
+    if (this.nota && name === 'titulo') {
+      this.nota['titulo'] = e.target.value;
+    } else if (this.nota && name === 'contenido') {
+      this.nota['contenido'] = e.target.value;
     }
 
     this._notaService.actualizar(this.nota);
+
+    // TODO crear aqui una promesa en actualizar nota para cuando termine de guarda me duevuelva el false para setear el estaGuardando y quitar el timeout
     setTimeout(() => (this.estaGuardando = false), 1000);
   }
 
@@ -102,7 +96,7 @@ export class NewNoteComponent implements OnInit, AfterContentInit {
     const popover = await this.popoverCtrl.create({
       component: MenuNoteComponent,
       componentProps: { noteId: this.nota?.id },
-      mode: "ios",
+      mode: 'ios',
       event: e,
     });
     await popover.present();

@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-settings',
   templateUrl: './settings.page.html',
   styleUrls: ['./settings.page.scss'],
 })
-export class SettingsPage implements OnInit {
+export class SettingsPage {
+  router = inject(Router);
 
-  constructor() { }
-
-  ngOnInit() {
+  redirectTo(url: string) {
+    this.router.navigate([url]);
   }
-
 }
