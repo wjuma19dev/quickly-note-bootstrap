@@ -30,7 +30,14 @@
       </div>
     </div>
 
+    @if(notas().length > 0) {
     <app-list-notes [notas]="notas()" />
+    } @else {
+    <app-no-notes
+      text="No tienes notas, para agregar una nueva nota presiona el boton con el icono de + que esta en la parte inferior, automaticamente se creara tu nota la cual podras editar al instante."
+      icon="comment"
+    />
+    }
   </div>
 </ion-content>
 

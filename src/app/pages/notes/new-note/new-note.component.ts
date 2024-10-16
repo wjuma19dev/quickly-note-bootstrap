@@ -88,6 +88,15 @@ export class NewNoteComponent implements OnInit {
     setTimeout(() => (this.estaGuardando = false), 1000);
   }
 
+  /**
+   RESTAURAR NOTA DE LA PAPELERA DE RECICLAJE
+   Esta funcion restaura una o varias notas desde la papelera de reciclaje al arrego de notas activas. 
+   */
+  public restaurar() {
+    this._notaService.restaurar(this.nota.id);
+    this.cerrarModal();
+  }
+
   abrirMenu(e: Event) {
     this.presentPopover(e);
   }

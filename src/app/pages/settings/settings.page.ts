@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { NoteService } from '../notes/note.service';
 
 @Component({
   selector: 'app-settings',
@@ -7,6 +8,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./settings.page.scss'],
 })
 export class SettingsPage {
+  logNotasPapelera = inject(NoteService).logNotasPapelera;
+
+  // @angular/core
   router = inject(Router);
 
   redirectTo(url: string) {

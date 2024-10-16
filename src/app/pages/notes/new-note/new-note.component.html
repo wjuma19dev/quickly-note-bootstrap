@@ -10,6 +10,9 @@
       <ion-button class="refresh" [ngClass]="{ 'd-none': !estaGuardando }">
         <i slot="icon-only" class="fi fi-rr-refresh d-flex text-muted"></i>
       </ion-button>
+      @if(nota.papelera) {
+      <ion-chip color="light" (click)="restaurar()">Restaurar</ion-chip>
+      }
       <ion-button (click)="abrirMenu($event)">
         <ion-icon
           slot="icon-only"

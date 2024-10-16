@@ -1,4 +1,4 @@
-import { Injectable, inject, signal } from '@angular/core';
+import { Injectable, computed, inject, signal } from '@angular/core';
 import { INota } from './note.interface';
 import { Nota } from './note.model';
 import { ToastService } from 'src/app/services/toast.service';
@@ -6,10 +6,16 @@ import { ToastButton } from '@ionic/angular';
 
 @Injectable({ providedIn: 'root' })
 export class NoteService {
-  private _notas = signal<INota[]>([]);
+  // Servicios
   private _toastService: ToastService = inject(ToastService);
+
+  // Propiedades
+  private _notas = signal<INota[]>([]);
   private _screenshot!: INota[];
   public notas = this._notas.asReadonly();
+  public logNotasPapelera = computed<number>(
+    () => this._notas().filter((nota) => nota.papelera).length
+  );
 
   public inicializarNotas() {
     const backup =
@@ -63,6 +69,11 @@ export class NoteService {
 
   // ENVIAR UNA NOTA A LA PAPELERA DE RECICLAJE
   public eliminar(notaId: string) {
+    this._notas.update((notas) => notas.filter((n) => n.id !== notaId));
+    localStorage.setItem('notas', JSON.stringify(this._notas()));
+  }
+
+  public enviarAPapelera(notaId: string) {
     const buttons: ToastButton[] = [
       {
         text: 'Revertir',
@@ -73,7 +84,6 @@ export class NoteService {
       },
     ];
     this._screenshot = this.notas();
-    // this._notas.update((notas) => notas.filter((n) => n.id !== notaId));
     this._notas.update((notas) =>
       notas.filter((n) => {
         if (n.id === notaId) {
@@ -84,11 +94,29 @@ export class NoteService {
     );
     localStorage.setItem('notas', JSON.stringify(this._notas()));
     this._toastService.presentToas(
-      'alert-simple-dark',
+      'alert-danger',
       'top',
       'Nota enviada a la papelera',
       'trash',
       buttons
+    );
+  }
+
+  public restaurar(notaId: string) {
+    this._notas.update((notas) =>
+      notas.filter((n) => {
+        if (n.id === notaId) {
+          n.papelera = false;
+        }
+        return n;
+      })
+    );
+    localStorage.setItem('notas', JSON.stringify(this._notas()));
+    this._toastService.presentToas(
+      'alert-success',
+      'bottom',
+      'Nota restaurada correctamente',
+      'checkmark-circle-outline'
     );
   }
 }

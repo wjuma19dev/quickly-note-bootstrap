@@ -27,6 +27,8 @@
   </ion-item>
   <ion-item detail lines="none" (click)="eliminarNota()">
     <i slot="start" class="fi fi-rr-trash d-flex rojo"></i>
-    <ion-label class="rojo">Papelera</ion-label>
+    <ion-label class="rojo">{{
+      notaEnPapelera() ? "Eliminar" : "Papelera"
+    }}</ion-label>
   </ion-item>
 </ion-list>

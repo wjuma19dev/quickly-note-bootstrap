@@ -1,4 +1,4 @@
-import { Component, Input, inject } from '@angular/core';
+import { Component, Input, computed, inject, signal } from '@angular/core';
 import { ModalController, PopoverController } from '@ionic/angular';
 import { NoteService } from 'src/app/pages/notes/note.service';
 
@@ -17,10 +17,22 @@ export class MenuNoteComponent {
 
   // Propiedades
   @Input() noteId!: string;
+  public notaEnPapelera = computed(
+    () =>
+      this._notaService.notas().find((nota) => nota.id === this.noteId)
+        ?.papelera
+  );
 
   // Metodos
   eliminarNota() {
-    this._notaService.eliminar(this.noteId);
+    if (this.notaEnPapelera()) {
+      // Eliminar la nota definitivamente
+      this._notaService.eliminar(this.noteId);
+    } else {
+      // Enviar a la papelera de reciclaje
+      this._notaService.enviarAPapelera(this.noteId);
+    }
+
     this._popoverCtrl.dismiss();
     this._modalCtrl.dismiss();
   }
