@@ -4,10 +4,7 @@
   <div class="container">
     <div class="row mt-3">
       <div class="col-10">
-        <ion-searchbar
-          class="barlow-regular ion-no-padding"
-          placeholder="Buscar aqui ..."
-        ></ion-searchbar>
+        <app-searchbar />
       </div>
       <div class="col-2">
         <ion-button class="shadow-none" shape="round" color="morado-100">
@@ -20,7 +17,7 @@
       <div class="col-10">
         <ion-button color="alert-danger" class="shadow-none" id="open-modal">
           <i class="bi bi-folder px-2"></i>
-          All
+          {{ folderSeleccionado()?.label }}
         </ion-button>
       </div>
       <div class="col-2">
@@ -43,23 +40,36 @@
   <ion-modal
     #modal
     trigger="open-modal"
-    [initialBreakpoint]="0.30"
+    [initialBreakpoint]="0.35"
     [breakpoints]="[0, 0.30, 0.5, 0.75]"
   >
     <ng-template>
       <ion-list class="p-3">
         @for(folder of folders(); track folder.id) {
-        <ion-item>
-          <i slot="start" class="bi bi-folder"></i>
+        <ion-item
+          (click)="seleccionarFolder(folder)"
+          color="{{ folder.active ? 'morado': '' }}"
+          [ngClass]="{ 'rounded-3': folder.active  }"
+        >
+          <i
+            slot="start"
+            class="bi bi-folder{{ folder.active ? '-check' : '' }}"
+            [ngClass]="{ 'text-light': folder.active  }"
+          ></i>
           <ion-label>
-            <h2 class="text-capitalize">{{folder.label}}</h2>
+            <h2
+              class="text-capitalize"
+              [ngClass]="{ 'text-light': folder.active  }"
+            >
+              {{folder.label}}
+            </h2>
           </ion-label>
-          <p slot="end">7</p>
+          <p slot="end" [ngClass]="{ 'text-light': folder.active  }">7</p>
         </ion-item>
         }
         <ion-item (click)="closeModal()" detail>
-          <i slot="start" class="bi bi-folder-plus text-morado"></i>
-          <ion-label class="text-morado">
+          <i slot="start" class="bi bi-folder-plus"></i>
+          <ion-label>
             <h2>Agregar folder</h2>
           </ion-label>
         </ion-item>

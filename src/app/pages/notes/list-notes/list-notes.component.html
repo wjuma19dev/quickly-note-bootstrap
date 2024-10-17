@@ -1,7 +1,8 @@
 <div class="row mt-4">
-  @for (nota of notas(); track nota.id) {
-    <div class="col-6 mb-4">
-      <app-item-note [nota]="nota" />
-    </div>
+  @for (nota of notas() | folderFilter: folderSeleccionado()?.id; track nota.id)
+  {
+  <div class="col-6 mb-4">
+    <app-item-note [nota]="nota" />
+  </div>
   }
 </div>

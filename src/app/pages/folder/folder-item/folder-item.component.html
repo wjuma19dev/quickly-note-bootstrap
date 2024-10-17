@@ -1,13 +1,24 @@
-<ion-item
-  (click)="marcarComoActivo()"
-  lines="none"
-  class="rounded-3 bg-light mb-2"
->
-  @if(folder().active) {
-  <i slot="start" class="bi bi-check-lg text-morado"></i>
-  } @else {
-  <i slot="start" class="bi bi-1-circle no-visually"></i>
+<ion-item-sliding>
+  @if(!folder().block ) {
+  <ion-item-options side="end">
+    <ion-item-option color="alert-danger" (click)="borrarFolder()">
+      <i slot="icon-only" class="bi bi-trash3"></i>
+    </ion-item-option>
+  </ion-item-options>
   }
-  <ion-label class="text-capitalize">{{ folder().label }}</ion-label>
-  <ion-label slot="end">1</ion-label>
-</ion-item>
+
+  <ion-item
+    [ngClass]="{ 'opacity-1': folder().block }"
+    (click)="marcarComoActivo()"
+    lines="none"
+    class="bg-light animate__animated animate__fadeIn"
+  >
+    @if(folder().active) {
+    <i slot="start" class="bi bi-check-lg text-morado"></i>
+    } @else {
+    <i slot="start" class="bi bi-1-circle no-visually"></i>
+    }
+    <ion-label class="text-capitalize">{{ folder().label }}</ion-label>
+    <ion-label slot="end">1</ion-label>
+  </ion-item>
+</ion-item-sliding>

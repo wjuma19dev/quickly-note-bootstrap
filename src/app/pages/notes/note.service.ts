@@ -29,6 +29,7 @@ export class NoteService {
           titulo: 'Mi primera nota',
           contenido: 'Esta es mi primera nota en esta grandiosa app',
           creado: new Date(),
+          folderId: 'default',
           papelera: false,
           favorito: false,
         },
@@ -38,6 +39,7 @@ export class NoteService {
           titulo: 'Mi segunda nota',
           contenido: 'Esta es mi segunda nota en esta grandiosa app',
           creado: new Date(),
+          folderId: 'default',
           papelera: false,
           favorito: false,
         },
@@ -47,6 +49,7 @@ export class NoteService {
           titulo: 'Mi tercera nota',
           contenido: 'Esta es mi tercera nota en esta grandiosa app',
           creado: new Date(),
+          folderId: 'default',
           papelera: false,
           favorito: false,
         },
@@ -55,7 +58,7 @@ export class NoteService {
     this._notas.update(() => notasGuardadas);
   }
 
-  public agregar(nota: any) {
+  public agregar(nota: INota) {
     this._notas.update((notas) => [nota, ...notas]);
     this.guardarNotasEnLocalStorage();
   }

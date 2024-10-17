@@ -39,6 +39,8 @@
 
 // Bootstrap icons
 @import "bootstrap-icons";
+// Animate Css
+@import "animate.css";
 
 body,
 h1,
@@ -110,12 +112,15 @@ strong {
   font-style: normal;
 }
 
-.searchbar-input.sc-ion-searchbar-md {
+// .searchbar-input.sc-ion-searchbar-md,
+input[type="search"]#searchbar {
   border-radius: 10px !important;
+  font-family: "Barlow", sans-serif;
   // border-color: none;
   // background-color: rgb(155 134 189 / 26%);
-  background-color: rgb(226 187 233 / 35%);
+  background-color: rgb(226 187 233 / 35%) !important;
   box-shadow: none;
+  border: none;
 }
 
 i {
@@ -142,10 +147,24 @@ i {
 /**
  * Inpu
  */
+
+// input radio
+// .alert-button.sc-ion-alert-md {
+//   color: var(--ion-color-morado-100) !important;
+// }
+[aria-checked="true"].sc-ion-alert-md .alert-radio-icon.sc-ion-alert-md {
+  border-color: var(--ion-color-morado-100) !important;
+}
+.alert-radio-inner.sc-ion-alert-md {
+  background-color: var(--ion-color-morado-100) !important;
+}
+
+// input
 .has-focus.sc-ion-textarea-md-h textarea.sc-ion-textarea-md,
 .has-focus.sc-ion-input-md-h input.sc-ion-input-md {
-  caret-color: var(--ion-color-morado-100);
+  caret-color: var(--ion-color-morado-100) !important;
 }
+
 .alert-input.sc-ion-alert-md:focus {
   margin-bottom: 4px;
   border-bottom: 2px solid var(--ion-color-morado);

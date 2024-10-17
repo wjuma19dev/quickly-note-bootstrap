@@ -1,9 +1,16 @@
-<ion-item class="mb-4 rounded-5" color="alert-warning" lines="none">
+<ion-item
+  class="mb-4 rounded-5 animate__animated animate__slideInDown animate__faster"
+  color="alert-warning"
+  lines="none"
+>
   <i slot="start" class="bi bi-folder2-open"></i>
   <ion-label class="fw-bold fs-7"
-    >Folder limitados {{ foldersLong().length }}/5</ion-label
+    >Folders gratis {{ foldersLong() }}/5</ion-label
   >
-  <ion-chip slot="end" color="morado">
+  <ion-chip
+    slot="end"
+    color="morado-50 animate__animated animate__pulse animate__infinite animate__delay-1s"
+  >
     <i class="bi bi-lightning-charge-fill px-1"></i>
     ¡Hazte Premium!
   </ion-chip>

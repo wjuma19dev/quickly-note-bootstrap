@@ -4,6 +4,7 @@ export interface INota {
   titulo: string;
   contenido: string;
   creado: Date;
+  folderId: string;
   papelera: boolean;
   favorito: boolean;
 }

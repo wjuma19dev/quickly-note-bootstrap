@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, computed, inject, input } from '@angular/core';
 import { FolderService } from '../folder.service';
 
 @Component({
@@ -7,5 +7,5 @@ import { FolderService } from '../folder.service';
   styleUrls: ['./folder-free-limit.component.scss'],
 })
 export class FolderFreeLimitComponent {
-  foldersLong = inject(FolderService).folders;
+  foldersLong = input.required<number>();
 }

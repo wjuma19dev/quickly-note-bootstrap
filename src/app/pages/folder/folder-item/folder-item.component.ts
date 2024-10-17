@@ -1,5 +1,13 @@
-import { Component, input } from '@angular/core';
-import { IFolder } from '../folder.service';
+import {
+  Component,
+  ElementRef,
+  inject,
+  input,
+  output,
+  ViewChild,
+} from '@angular/core';
+import { FolderService, IFolder } from '../folder.service';
+import { IonItem, IonItemSliding } from '@ionic/angular';
 
 @Component({
   selector: 'app-folder-item',
@@ -7,9 +15,19 @@ import { IFolder } from '../folder.service';
   styleUrls: ['./folder-item.component.scss'],
 })
 export class FolderItemComponent {
-  folder = input.required<IFolder>();
+  // Servicios
+  private _folderService = inject(FolderService);
+
+  // Propiedades
+  public folder = input.required<IFolder>();
+  public cerrarSliding = output();
 
   marcarComoActivo() {
-    console.log(this.folder());
+    this._folderService.seleccionarFolder(this.folder().id);
+  }
+
+  async borrarFolder() {
+    this.cerrarSliding.emit();
+    await this._folderService.borrarFolder(this.folder().id);
   }
 }

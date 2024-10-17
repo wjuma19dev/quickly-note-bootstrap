@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, computed, inject, input } from '@angular/core';
 import { AlertButton, AlertInput } from '@ionic/angular';
 import { FolderService } from '../folder.service';
 
@@ -11,6 +11,9 @@ export class FolderNewComponent {
   // Servicios
   private _folderService = inject(FolderService);
 
+  // Propiedades
+  public foldersLong = input.required<number>();
+  public buttonBlocked = computed(() => this.foldersLong() >= 5);
   public alertButtons: AlertButton[] = [
     {
       text: 'Cancelar',
@@ -25,12 +28,11 @@ export class FolderNewComponent {
       cssClass: 'btn btn-morado',
       role: 'confirm',
       handler: async (e) => {
-        if (this._folderService.folders().length >= 5) {
+        if (this.buttonBlocked()) {
           alert('Hazte premium');
           // TODO Mostrar pantalla para hacerte premium aqui
           return;
         }
-
         const folder = e[0].trim().toLowerCase();
         const result = await this._folderService.agregar(folder);
       },

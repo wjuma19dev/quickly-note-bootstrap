@@ -1,8 +1,16 @@
-<ion-card id="nuevo-folder" class="mx-0 rounded-3 py-2 shadow-none bg-light">
+<ion-card
+  [disabled]="buttonBlocked()"
+  id="nuevo-folder"
+  class="mx-0 rounded-3 py-2 shadow-none animate__animated animate__fadeIn"
+  [ngClass]="{ 'bg-morado text-light opacity-1': buttonBlocked() }"
+>
   <ion-card-content
     class="d-flex flex-column ion-align-items-center ion-justify-content-center"
   >
-    <i class="bi bi-plus-square-dotted mb-2 text-morado"></i>
+    <i
+      [ngClass]="{ 'text-morado': !buttonBlocked() }"
+      class="bi bi-plus-circle mb-2"
+    ></i>
     <p>Nuevo folder</p>
   </ion-card-content>
 </ion-card>

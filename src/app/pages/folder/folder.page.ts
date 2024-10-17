@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { FolderService } from './folder.service';
 
 @Component({
@@ -9,4 +9,5 @@ import { FolderService } from './folder.service';
 export class FolderPage {
   private _folderService = inject(FolderService);
   public folders = this._folderService.folders;
+  public foldersLong = computed<number>(() => this.folders().length);
 }

@@ -7,7 +7,7 @@
     </ion-toolbar>
   </ion-header>
 
-  <app-folder-free-limit />
+  <app-folder-free-limit [foldersLong]="foldersLong()" />
   <app-folder-list [folders]="folders()" />
-  <app-folder-new />
+  <app-folder-new [foldersLong]="foldersLong()" />
 </ion-content>

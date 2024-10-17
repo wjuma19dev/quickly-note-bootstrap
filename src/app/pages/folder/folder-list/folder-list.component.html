@@ -1,5 +1,5 @@
-@for(folder of folders(); track folder) {
-<app-folder-item [folder]="folder" />
-} @empty {
-<p>No hay folders</p>
-}
+<ion-list class="ion-no-padding">
+  @for(folder of folders(); track folder) {
+  <app-folder-item (cerrarSliding)="cerrarListSliding()" [folder]="folder" />
+  }
+</ion-list>

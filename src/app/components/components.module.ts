@@ -8,6 +8,7 @@ import { RouterLink } from '@angular/router';
 import { BotonSalirComponent } from './boton-salir/boton-salir.component';
 import { CheckedBloquearComponent } from './checked-bloquear/checked-bloquear.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { SearchbarComponent } from './searchbar/searchbar.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     BotonSalirComponent,
     CheckedBloquearComponent,
     NavbarComponent,
+    SearchbarComponent,
   ],
   imports: [CommonModule, IonicModule, RouterLink],
   exports: [
@@ -25,6 +27,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     BotonSalirComponent,
     CheckedBloquearComponent,
     NavbarComponent,
+    SearchbarComponent,
   ],
 })
 export class ComponentsModule {}

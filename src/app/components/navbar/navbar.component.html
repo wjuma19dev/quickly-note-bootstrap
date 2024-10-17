@@ -1,15 +1,13 @@
 <ion-header class="shadow-none" [translucent]="true">
   <ion-toolbar color="morado">
-    <ion-buttons slot="start" color="light">
-      <ion-back-button color="light" defaultHref="/settings"></ion-back-button>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/settings"></ion-back-button>
     </ion-buttons>
-    <ion-title size="large" color="light" class="text-capitalize">{{
-      titulo
-    }}</ion-title>
+    <ion-title size="large" class="text-capitalize">{{ titulo }}</ion-title>
     <ion-buttons slot="end">
       @if(titulo === 'folders') {
-      <ion-button color="light">
-        <i slot="icon-only" class="bi bi-trash3-fill"></i>
+      <ion-button [routerLink]="['/papelera']">
+        <i slot="icon-only" class="bi bi-trash"></i>
       </ion-button>
       }
       <!-- <ion-button>

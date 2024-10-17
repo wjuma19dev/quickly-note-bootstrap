@@ -12,6 +12,7 @@ import { ListNotesComponent } from './list-notes/list-notes.component';
 import { ItemNoteComponent } from './item-note/item-note.component';
 import { NewNoteComponent } from './new-note/new-note.component';
 import { NoNotesComponent } from './no-notes/no-notes.component';
+import { FolderFilterPipe } from './folder-filter.pipe';
 
 @NgModule({
   imports: [
@@ -26,6 +27,7 @@ import { NoNotesComponent } from './no-notes/no-notes.component';
     ListNotesComponent,
     ItemNoteComponent,
     NoNotesComponent,
+    FolderFilterPipe,
   ],
   exports: [ListNotesComponent, ItemNoteComponent, NoNotesComponent],
 })

@@ -2,7 +2,7 @@ import { Component, computed, inject, ViewChild } from '@angular/core';
 import { NoteService } from './note.service';
 import { ModalController } from '@ionic/angular';
 import { Router } from '@angular/router';
-import { FolderService } from '../folder/folder.service';
+import { FolderService, IFolder } from '../folder/folder.service';
 
 @Component({
   selector: 'app-notes',
@@ -14,18 +14,28 @@ export class NotesPage {
   @ViewChild('modal') modal!: ModalController;
 
   // @angular/core
-  router = inject(Router);
+  private _router = inject(Router);
 
   // Services
-  notasArr = inject(NoteService).notas;
-  public folders = inject(FolderService).folders;
+  private _folderService = inject(FolderService);
+  private _noteService = inject(NoteService);
 
   // Propiedades
-  notas = computed(() => this.notasArr().filter((nota) => !nota.papelera));
+  private _notasArr = this._noteService.notas;
+  public folders = this._folderService.folders;
+  public folderSeleccionado = this._folderService.folderSeleccionado;
+  public notas = computed(() =>
+    this._notasArr().filter((nota) => !nota.papelera)
+  );
 
   // Metodos
   async closeModal() {
     await this.modal.dismiss();
-    this.router.navigate(['/folder']);
+    this._router.navigate(['/folder']);
+  }
+
+  seleccionarFolder(folder: IFolder) {
+    this._folderService.seleccionarFolder(folder.id);
+    this.modal.dismiss();
   }
 }

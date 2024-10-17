@@ -5,13 +5,13 @@
         <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title>{{ selected ? "Editar" : "Crear" }}</ion-title>
+    <ion-title>{{ editMode ? "Editar" : "Crear" }}</ion-title>
     <ion-buttons slot="end">
-      @if(nota.favorito && !nota.papelera){
+      @if(nota().favorito && !nota().papelera){
       <ion-button disabled
         ><i slot="icon-only" class="fi fi-rr-star"></i
       ></ion-button>
-      }@else if(nota.papelera) {
+      }@else if(nota().papelera) {
       <ion-chip color="light" (click)="restaurar()">Restaurar</ion-chip>
       }
       <!-- <ion-button class="refresh" [ngClass]="{ 'd-none': !estaGuardando }">
@@ -31,7 +31,7 @@
   <!-- Fecha de creacion de la nota -->
   <ion-item lines="none" color="light">
     <ion-label class="text-muted">{{
-      nota.creado | date : "medium"
+      nota().creado | date : "medium"
     }}</ion-label>
   </ion-item>
   <!-- // fin -->
@@ -42,31 +42,15 @@
       (keyup)="actualizarNota($event)"
       placeholder="Sin titulo"
       class="titulo"
-      [(ngModel)]="nota.titulo"
+      [(ngModel)]="nota().titulo"
     ></ion-input>
   </ion-item>
   <!-- // Fin -->
   <!-- Categoria -->
   <div class="categoria my-4 px-3">
-    <!--   <div class="badge text-muted">
-      <i class="fi fi-rr-folder"></i>
-      All
-    </div> -->
-    <ion-button color="alert-danger">
-      <!--      <i class="fi fi-rr-folder px-2"></i>
-      All -->
-      <i class="fi fi-rr-folder px-2"></i>
-      <ion-select
-        [interfaceOptions]="customAlertOptions"
-        interface="alert"
-        aria-label="fruit"
-        value="all"
-        mode="ios"
-      >
-        <ion-select-option value="all">All</ion-select-option>
-        <ion-select-option value="work">Work</ion-select-option>
-        <ion-select-option value="personal">Personal</ion-select-option>
-      </ion-select>
+    <ion-button color="alert-danger" (click)="escogerFolder()">
+      <i class="bi bi-folder px-2"></i>
+      {{ folder().label }}
     </ion-button>
   </div>
   <!-- // Fin -->
@@ -78,7 +62,7 @@
       (keyup)="actualizarNota($event)"
       class="contenido"
       placeholder="Empieza a escribir aqui"
-      [(ngModel)]="nota.contenido"
+      [(ngModel)]="nota().contenido"
     ></ion-textarea>
   </ion-item>
   <!-- // Fin -->
