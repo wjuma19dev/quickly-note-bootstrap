@@ -15,10 +15,10 @@
     <div class="row mt-5">
       <div class="col-12">
         <ion-item
-          color="alert-simple-dark"
           detail
           lines="none"
-          class="rounded-4 mb-3 bg-item"
+          class="rounded-4 mb-3 bg-light"
+          (click)="redirectTo('/cuenta')"
         >
           <span slot="start" class="bg-morado p-3 m-2 rounded-5 text-light">
             <i class="fi fi-rr-user"></i>
@@ -28,25 +28,31 @@
           </ion-label>
         </ion-item>
         <ion-item
-          color="alert-simple-dark"
           detail
           lines="none"
-          class="rounded-4 mb-3 bg-item"
-          (click)="redirectTo('/favoritos')"
+          class="rounded-4 mb-3 bg-light"
+          (click)="redirectTo('/favorito')"
         >
           <span slot="start" class="bg-morado p-3 m-2 rounded-5 text-light">
             <i class="fi fi-rr-star"></i>
           </span>
           <ion-label>
             <h3 class="fw-bold fs-6">Favoritos</h3>
-            <p class="text-muted"><span>7</span> Notas</p>
+            @if( logNotasFavorito()) {
+            <p class="text-muted">
+              <span>{{ logNotasFavorito() }} Notas</span>
+            </p>
+            }@else {
+            <p class="text-muted">
+              <span>No hay notas</span>
+            </p>
+            }
           </ion-label>
         </ion-item>
         <ion-item
-          color="alert-simple-dark"
           detail
           lines="none"
-          class="rounded-4 mb-3 bg-item"
+          class="rounded-4 mb-3 bg-light"
           (click)="redirectTo('/papelera')"
         >
           <span slot="start" class="bg-morado p-3 m-2 rounded-5 text-light">
@@ -54,17 +60,18 @@
           </span>
           <ion-label>
             <h3 class="fw-bold fs-6">Papelera</h3>
+            @if( logNotasPapelera()) {
             <p class="text-muted">
-              <span>{{ logNotasPapelera() }}</span> Notas
+              <span>{{ logNotasPapelera() }} Notas</span>
             </p>
+            }@else {
+            <p class="text-muted">
+              <span>No hay notas</span>
+            </p>
+            }
           </ion-label>
         </ion-item>
-        <ion-item
-          color="alert-simple-dark"
-          detail
-          lines="none"
-          class="rounded-4 mb-3 bg-item"
-        >
+        <ion-item detail lines="none" class="rounded-4 mb-3 bg-light">
           <span slot="start" class="bg-morado p-3 m-2 rounded-5 text-light">
             <i class="fi fi-rr-fill"></i>
           </span>
@@ -72,12 +79,7 @@
             <h3 class="fw-bold fs-6">Apariencia</h3>
           </ion-label>
         </ion-item>
-        <ion-item
-          color="alert-simple-dark"
-          detail
-          lines="none"
-          class="rounded-4 mb-3 bg-item"
-        >
+        <ion-item detail lines="none" class="rounded-4 mb-3 bg-light">
           <span slot="start" class="bg-morado p-3 m-2 rounded-5 text-light">
             <i class="fi fi-rr-settings-sliders"></i>
           </span>
@@ -85,12 +87,7 @@
             <h3 class="fw-bold fs-6">General</h3>
           </ion-label>
         </ion-item>
-        <ion-item
-          color="alert-simple-dark"
-          detail
-          lines="none"
-          class="rounded-4 mb-3 bg-item"
-        >
+        <ion-item detail lines="none" class="rounded-4 mb-3 bg-light">
           <span slot="start" class="bg-morado p-3 m-2 rounded-5 text-light">
             <i class="fi fi-rr-info"></i>
           </span>

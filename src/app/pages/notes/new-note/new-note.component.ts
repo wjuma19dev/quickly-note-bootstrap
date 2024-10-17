@@ -51,14 +51,14 @@ export class NewNoteComponent implements OnInit {
   ngOnInit(): void {
     if (!this.editMode) {
       // Crear la nota automaticamente una vez entre el modal
-      const nota = new Nota('', '', new Date(), false);
+      const nota = new Nota('', '', new Date());
       // Pasando la referencia de la nota creada al atributo nota
       this.nota = nota;
       // Guardar la nota
       this._notaService.agregar(nota);
       // Presentar toast informando al cliente que se ha creado la nota
       this._toastService.presentToas(
-        'alert-success',
+        'alert-simple-dark',
         'bottom',
         'Nota creada correctamente',
         'checkmark-circle-outline'

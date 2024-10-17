@@ -1,0 +1,13 @@
+<ion-item
+  (click)="marcarComoActivo()"
+  lines="none"
+  class="rounded-3 bg-light mb-2"
+>
+  @if(folder().active) {
+  <i slot="start" class="bi bi-check-lg text-morado"></i>
+  } @else {
+  <i slot="start" class="bi bi-1-circle no-visually"></i>
+  }
+  <ion-label>{{ folder().label }}</ion-label>
+  <ion-label slot="end">1</ion-label>
+</ion-item>

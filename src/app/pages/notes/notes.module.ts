@@ -27,6 +27,6 @@ import { NoNotesComponent } from './no-notes/no-notes.component';
     ItemNoteComponent,
     NoNotesComponent,
   ],
-  exports: [ListNotesComponent, ItemNoteComponent],
+  exports: [ListNotesComponent, ItemNoteComponent, NoNotesComponent],
 })
 export class NotesPageModule {}

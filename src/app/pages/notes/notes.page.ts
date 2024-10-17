@@ -1,5 +1,7 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component, computed, inject, ViewChild } from '@angular/core';
 import { NoteService } from './note.service';
+import { ModalController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-notes',
@@ -7,8 +9,12 @@ import { NoteService } from './note.service';
   styleUrls: ['./notes.page.scss'],
 })
 export class NotesPage {
+  @ViewChild('modal') modal!: ModalController;
+  router = inject(Router);
   notasArr = inject(NoteService).notas;
   notas = computed(() => this.notasArr().filter((nota) => !nota.papelera));
-
-  constructor() {}
+  async closeModal() {
+    await this.modal.dismiss();
+    this.router.navigate(['/folder']);
+  }
 }

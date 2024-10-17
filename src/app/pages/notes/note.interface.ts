@@ -5,4 +5,5 @@ export interface INota {
   contenido: string;
   creado: Date;
   papelera: boolean;
+  favorito: boolean;
 }

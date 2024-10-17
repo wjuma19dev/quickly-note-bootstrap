@@ -7,5 +7,12 @@
     </ion-toolbar>
   </ion-header>
 
+  @if(notas().length > 0) {
   <app-list-notes [notas]="notas()" />
+  } @else {
+  <app-no-notes
+    text="Por que siempre querras recuperar esas notas que archivas, sabemos que son importantes para ti, por eso te brindamos la oportunidad de recuperar tus notas enviadas a la papelera, agrega notas y restauralas cuando quieras."
+    icon="trash"
+  />
+  }
 </ion-content>

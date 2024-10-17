@@ -1,16 +1,23 @@
 <ion-header class="shadow-none" [translucent]="true">
   <ion-toolbar color="morado">
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/settings"></ion-back-button>
+    <ion-buttons slot="start" color="light">
+      <ion-back-button color="light" defaultHref="/settings"></ion-back-button>
     </ion-buttons>
-    <ion-title size="large" class="text-capitalize">{{ titulo }}</ion-title>
+    <ion-title size="large" color="light" class="text-capitalize">{{
+      titulo
+    }}</ion-title>
     <ion-buttons slot="end">
-      <ion-button>
+      @if(titulo === 'folders') {
+      <ion-button color="light">
+        <i slot="icon-only" class="bi bi-trash3-fill"></i>
+      </ion-button>
+      }
+      <!-- <ion-button>
         <ion-icon
           slot="icon-only"
           name="ellipsis-horizontal-outline"
         ></ion-icon>
-      </ion-button>
+      </ion-button> -->
     </ion-buttons>
   </ion-toolbar>
 </ion-header>

@@ -1,0 +1,12 @@
+<app-navbar titulo="folders" />
+
+<ion-content [fullscreen]="true" class="ion-padding" color="light">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">folders</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <app-folder-list [folders]="folders()" />
+  <app-folder-new />
+</ion-content>

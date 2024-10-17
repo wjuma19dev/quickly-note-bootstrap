@@ -1,4 +1,4 @@
-import { Injectable, computed, inject, signal } from '@angular/core';
+import { Injectable, OnInit, computed, inject, signal } from '@angular/core';
 import { INota } from './note.interface';
 import { Nota } from './note.model';
 import { ToastService } from 'src/app/services/toast.service';
@@ -11,10 +11,12 @@ export class NoteService {
 
   // Propiedades
   private _notas = signal<INota[]>([]);
-  private _screenshot!: INota[];
   public notas = this._notas.asReadonly();
   public logNotasPapelera = computed<number>(
     () => this._notas().filter((nota) => nota.papelera).length
+  );
+  public logNotasFavorito = computed<number>(
+    () => this._notas().filter((nota) => nota.favorito && !nota.papelera).length
   );
 
   public inicializarNotas() {
@@ -27,7 +29,8 @@ export class NoteService {
           titulo: 'Mi primera nota',
           contenido: 'Esta es mi primera nota en esta grandiosa app',
           creado: new Date(),
-          papelera: true,
+          papelera: false,
+          favorito: false,
         },
         {
           id: '2',
@@ -36,6 +39,7 @@ export class NoteService {
           contenido: 'Esta es mi segunda nota en esta grandiosa app',
           creado: new Date(),
           papelera: false,
+          favorito: false,
         },
         {
           id: '3',
@@ -43,7 +47,8 @@ export class NoteService {
           titulo: 'Mi tercera nota',
           contenido: 'Esta es mi tercera nota en esta grandiosa app',
           creado: new Date(),
-          papelera: true,
+          papelera: false,
+          favorito: false,
         },
       ]);
     const notasGuardadas = JSON.parse(backup);
@@ -52,7 +57,7 @@ export class NoteService {
 
   public agregar(nota: any) {
     this._notas.update((notas) => [nota, ...notas]);
-    localStorage.setItem('notas', JSON.stringify(this._notas()));
+    this.guardarNotasEnLocalStorage();
   }
 
   public actualizar(nota: any) {
@@ -64,13 +69,13 @@ export class NoteService {
         return n;
       })
     );
-    localStorage.setItem('notas', JSON.stringify(this._notas()));
+    this.guardarNotasEnLocalStorage();
   }
 
   // ENVIAR UNA NOTA A LA PAPELERA DE RECICLAJE
   public eliminar(notaId: string) {
     this._notas.update((notas) => notas.filter((n) => n.id !== notaId));
-    localStorage.setItem('notas', JSON.stringify(this._notas()));
+    this.guardarNotasEnLocalStorage();
   }
 
   public enviarAPapelera(notaId: string) {
@@ -78,12 +83,12 @@ export class NoteService {
       {
         text: 'Revertir',
         handler: () => {
-          this._notas.set(this._screenshot);
-          localStorage.setItem('notas', JSON.stringify(this._notas()));
+          this.restaurar(notaId);
         },
       },
     ];
-    this._screenshot = this.notas();
+
+    // Enviar a papelera
     this._notas.update((notas) =>
       notas.filter((n) => {
         if (n.id === notaId) {
@@ -92,10 +97,11 @@ export class NoteService {
         return n;
       })
     );
-    localStorage.setItem('notas', JSON.stringify(this._notas()));
+
+    this.guardarNotasEnLocalStorage();
     this._toastService.presentToas(
-      'alert-danger',
-      'top',
+      'alert-simple-dark',
+      'bottom',
       'Nota enviada a la papelera',
       'trash',
       buttons
@@ -111,12 +117,54 @@ export class NoteService {
         return n;
       })
     );
-    localStorage.setItem('notas', JSON.stringify(this._notas()));
+    this.guardarNotasEnLocalStorage();
     this._toastService.presentToas(
-      'alert-success',
+      'alert-simple-dark',
       'bottom',
       'Nota restaurada correctamente',
       'checkmark-circle-outline'
     );
+  }
+
+  public enviarAFavoritos(notaId: string) {
+    this._notas.update((notas) =>
+      notas.filter((n) => {
+        if (n.id === notaId) {
+          if (n.favorito) {
+            this.mostrarFavoritoALerta('Se elimino de favorito.');
+          } else {
+            this.mostrarFavoritoALerta('Se agrego a favorito.');
+          }
+          n.favorito = !n.favorito;
+        }
+        return n;
+      })
+    );
+    this.guardarNotasEnLocalStorage();
+  }
+
+  consultarNotaEnFavorito(notaId: string) {
+    return this._notas().find((n) => n.id === notaId);
+  }
+
+  // TODO este metodo es para eliminar una nota de favoritos, es totalmente opcional
+  eliminarNotaDeFavoritos(notaId: string) {
+    this._notas.update((notas) =>
+      notas.filter((n) => {
+        if (n.id === notaId) {
+          n.favorito = false;
+        }
+        return n;
+      })
+    );
+    this.guardarNotasEnLocalStorage();
+  }
+
+  guardarNotasEnLocalStorage() {
+    localStorage.setItem('notas', JSON.stringify(this._notas()));
+  }
+
+  mostrarFavoritoALerta(mensaje: string) {
+    this._toastService.presentToas('alert-simple-dark', 'bottom', mensaje);
   }
 }

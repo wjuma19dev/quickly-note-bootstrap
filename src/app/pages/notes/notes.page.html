@@ -10,7 +10,7 @@
         ></ion-searchbar>
       </div>
       <div class="col-2">
-        <ion-button shape="round" color="morado-100">
+        <ion-button class="shadow-none" shape="round" color="morado-100">
           <i slot="icon-only" class="fi fi-rr-align-left d-flex"></i>
         </ion-button>
       </div>
@@ -18,13 +18,13 @@
 
     <div class="row mt-5">
       <div class="col-10">
-        <div class="badge text-muted">
-          <i class="fi fi-rr-folder"></i>
+        <ion-button color="alert-danger" class="shadow-none" id="open-modal">
+          <i class="bi bi-folder px-2"></i>
           All
-        </div>
+        </ion-button>
       </div>
       <div class="col-2">
-        <ion-button shape="round" color="morado-100">
+        <ion-button class="shadow-none" shape="round" color="morado-100">
           <i slot="icon-only" class="fi fi-rr-sort-amount-down-alt d-flex"></i>
         </ion-button>
       </div>
@@ -39,6 +39,45 @@
     />
     }
   </div>
+
+  <ion-modal
+    #modal
+    trigger="open-modal"
+    [initialBreakpoint]="0.30"
+    [breakpoints]="[0, 0.30, 0.5, 0.75]"
+  >
+    <ng-template>
+      <ion-list class="p-3">
+        <ion-item>
+          <i slot="start" class="bi bi-folder"></i>
+          <ion-label>
+            <h2>All</h2>
+            <p>7</p>
+          </ion-label>
+        </ion-item>
+        <ion-item>
+          <i slot="start" class="bi bi-folder"></i>
+          <ion-label>
+            <h2>Work</h2>
+            <p>0</p>
+          </ion-label>
+        </ion-item>
+        <ion-item>
+          <i slot="start" class="bi bi-folder"></i>
+          <ion-label>
+            <h2>Personal</h2>
+            <p>0</p>
+          </ion-label>
+        </ion-item>
+        <ion-item (click)="closeModal()" detail>
+          <i slot="start" class="bi bi-folder-plus text-morado"></i>
+          <ion-label class="text-morado">
+            <h2>Agregar folder</h2>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ng-template>
+  </ion-modal>
 </ion-content>
 
 <app-tabs />

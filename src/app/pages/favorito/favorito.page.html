@@ -1,0 +1,18 @@
+<app-navbar titulo="favorito" />
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-header class="shadow-none" collapse="condense">
+    <ion-toolbar color="morado">
+      <ion-title size="large" class="text-capitalize">favorito</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  @if(notas().length > 0) {
+  <app-list-notes [notas]="notas()" />
+  } @else {
+  <app-no-notes
+    text="Tener tus nota marcada como favorito te permite tener acceso rapido a esa nota que es muy importante para ti, puedes agregar una nota a favorito de manera rapida y facil, agregala cuando quieras."
+    icon="star"
+  />
+  }
+</ion-content>

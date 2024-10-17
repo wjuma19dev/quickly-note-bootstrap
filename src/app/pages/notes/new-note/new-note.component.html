@@ -7,12 +7,16 @@
     </ion-buttons>
     <ion-title>{{ selected ? "Editar" : "Crear" }}</ion-title>
     <ion-buttons slot="end">
-      <ion-button class="refresh" [ngClass]="{ 'd-none': !estaGuardando }">
-        <i slot="icon-only" class="fi fi-rr-refresh d-flex text-muted"></i>
-      </ion-button>
-      @if(nota.papelera) {
+      @if(nota.favorito && !nota.papelera){
+      <ion-button disabled
+        ><i slot="icon-only" class="fi fi-rr-star"></i
+      ></ion-button>
+      }@else if(nota.papelera) {
       <ion-chip color="light" (click)="restaurar()">Restaurar</ion-chip>
       }
+      <!-- <ion-button class="refresh" [ngClass]="{ 'd-none': !estaGuardando }">
+        <i slot="icon-`only" class="fi fi-rr-refresh d-flex text-muted"></i>
+      </ion-button> -->
       <ion-button (click)="abrirMenu($event)">
         <ion-icon
           slot="icon-only"

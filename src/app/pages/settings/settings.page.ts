@@ -10,6 +10,8 @@ import { NoteService } from '../notes/note.service';
 export class SettingsPage {
   logNotasPapelera = inject(NoteService).logNotasPapelera;
 
+  logNotasFavorito = inject(NoteService).logNotasFavorito;
+
   // @angular/core
   router = inject(Router);
 

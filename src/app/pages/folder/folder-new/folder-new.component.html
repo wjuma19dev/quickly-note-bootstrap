@@ -1,0 +1,18 @@
+<ion-card id="nuevo-folder" class="mx-0 rounded-3 py-2 shadow-none bg-light">
+  <ion-card-content
+    class="d-flex flex-column ion-align-items-center ion-justify-content-center"
+  >
+    <i class="bi bi-plus-square-dotted mb-2 text-morado"></i>
+    <p>Nuevo folder</p>
+  </ion-card-content>
+</ion-card>
+
+<ion-alert
+  trigger="nuevo-folder"
+  message="Agrega una nueva categoria"
+  header="Nuevo folder"
+  [buttons]="alertButtons"
+  (didDismiss)="setResult($event)"
+  [inputs]="alertInput"
+  mode="md"
+></ion-alert>

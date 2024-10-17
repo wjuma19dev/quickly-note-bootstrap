@@ -1,4 +1,5 @@
 <ion-list color="morado">
+  @if(!notaEnPapelera()) {
   <ion-item detail lines="none">
     <i slot="start" class="fi fi-rr-thumbtack d-flex text-muted"></i>
     <ion-label class="text-muted">Anclar</ion-label>
@@ -21,10 +22,19 @@
     <i slot="start" class="fi fi-rr-bell d-flex text-muted"></i>
     <ion-label class="text-muted">Recordatorio</ion-label>
   </ion-item>
-  <ion-item detail lines="none">
-    <i slot="start" class="fi fi-rr-star d-flex text-muted"></i>
-    <ion-label class="text-muted">Favorito</ion-label>
+  <ion-item detail lines="none" (click)="favorito()">
+    <i
+      slot="start"
+      class="fi fi-rr-star d-flex text-muted"
+      [ngClass]="{ 'text-morado': notaEnFavorito() }"
+    ></i>
+    <ion-label
+      [ngClass]="{ 'text-morado': notaEnFavorito() }"
+      class="text-muted"
+      >Favorito</ion-label
+    >
   </ion-item>
+  }
   <ion-item detail lines="none" (click)="eliminarNota()">
     <i slot="start" class="fi fi-rr-trash d-flex rojo"></i>
     <ion-label class="rojo">{{
