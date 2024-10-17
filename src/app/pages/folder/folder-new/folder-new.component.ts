@@ -25,7 +25,13 @@ export class FolderNewComponent {
       cssClass: 'btn btn-morado',
       role: 'confirm',
       handler: async (e) => {
-        const folder = e[0];
+        if (this._folderService.folders().length >= 5) {
+          alert('Hazte premium');
+          // TODO Mostrar pantalla para hacerte premium aqui
+          return;
+        }
+
+        const folder = e[0].trim().toLowerCase();
         const result = await this._folderService.agregar(folder);
       },
     },

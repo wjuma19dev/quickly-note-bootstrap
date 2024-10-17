@@ -56,12 +56,18 @@ strong {
   font-weight: 400;
   font-style: normal;
 }
+.fs-7 {
+  font-size: 0.9rem !important;
+}
 .no-visually {
   visibility: hidden;
 }
 .btn-danger {
   background-color: #dc3545 !important;
   color: color.$texto !important;
+}
+.bg-naranja {
+  background-color: color.$naranja !important;
 }
 .btn-dark {
   background-color: #212529 !important;

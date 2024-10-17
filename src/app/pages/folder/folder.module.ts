@@ -11,6 +11,7 @@ import { ComponentsModule } from '../../components/components.module';
 import { FolderListComponent } from './folder-list/folder-list.component';
 import { FolderItemComponent } from './folder-item/folder-item.component';
 import { FolderNewComponent } from './folder-new/folder-new.component';
+import { FolderFreeLimitComponent } from './folder-free-limit/folder-free-limit.component';
 
 @NgModule({
   imports: [
@@ -25,6 +26,7 @@ import { FolderNewComponent } from './folder-new/folder-new.component';
     FolderListComponent,
     FolderItemComponent,
     FolderNewComponent,
+    FolderFreeLimitComponent,
   ],
 })
 export class FolderPageModule {}
