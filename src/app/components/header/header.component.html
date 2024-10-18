@@ -4,9 +4,9 @@
       <div class="col-8">
         <ion-title>
           <h1 class="m-0">{{ title() }}</h1>
-          @if (size()) {
+          @if (notas().length > 0) {
           <p class="m-0 lead text-muted">
-            <span>{{ size() }}</span> notas
+            <span>{{ notas().length }}</span> notas
           </p>
           } @else {
           <p class="m-0 lead text-muted">

@@ -8,6 +8,6 @@ import { FolderService } from './folder.service';
 })
 export class FolderPage {
   private _folderService = inject(FolderService);
-  public folders = this._folderService.folders;
+  public folders = this._folderService.fordersFtNotas;
   public foldersLong = computed<number>(() => this.folders().length);
 }

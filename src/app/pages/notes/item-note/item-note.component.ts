@@ -1,7 +1,6 @@
 import { Component, inject, input } from '@angular/core';
 import { INota } from '../note.interface';
-import { ModalController } from '@ionic/angular';
-import { NewNoteComponent } from '../new-note/new-note.component';
+import { ModalService } from 'src/app/services/modal.service';
 
 @Component({
   selector: 'app-item-note',
@@ -9,14 +8,10 @@ import { NewNoteComponent } from '../new-note/new-note.component';
   styleUrls: ['./item-note.component.scss'],
 })
 export class ItemNoteComponent {
-  private _modalCtrl: ModalController = inject(ModalController);
-  nota = input.required<INota>();
+  private _modalService = inject(ModalService);
+  public nota = input.required<INota>();
 
   async editarNota() {
-    const modal = await this._modalCtrl.create({
-      component: NewNoteComponent,
-      componentProps: { notaId: this.nota().id, editMode: true },
-    });
-    await modal.present();
+    this._modalService.present(this.nota().id);
   }
 }

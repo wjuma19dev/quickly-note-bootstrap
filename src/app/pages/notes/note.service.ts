@@ -13,10 +13,14 @@ export class NoteService {
   private _notas = signal<INota[]>([]);
   public notas = this._notas.asReadonly();
   public logNotasPapelera = computed<number>(
-    () => this._notas().filter((nota) => nota.papelera).length
+    () => this.notas().filter((nota) => nota.papelera).length
   );
   public logNotasFavorito = computed<number>(
     () => this._notas().filter((nota) => nota.favorito && !nota.papelera).length
+  );
+
+  public notasEnPapelera = computed<INota[]>(() =>
+    this._notas().filter((nota) => nota.papelera)
   );
 
   public inicializarNotas() {

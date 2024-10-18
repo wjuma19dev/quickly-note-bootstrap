@@ -1,16 +1,20 @@
-import { computed, Injectable, signal } from '@angular/core';
+import { computed, inject, Injectable, signal } from '@angular/core';
 import { nanoid } from 'nanoid';
+import { NoteService } from '../notes/note.service';
+import { INota } from '../notes/note.interface';
 
 export interface IFolder {
   id: string;
   label: string;
   active: boolean;
   block: boolean;
+  notes?: INota[];
 }
 
 @Injectable({ providedIn: 'root' })
 export class FolderService {
   // Servicios
+  private _noteService = inject(NoteService);
 
   // Propiedades
   private _folders = signal<IFolder[]>([
@@ -20,6 +24,17 @@ export class FolderService {
   public folderSeleccionado = computed(() =>
     this._folders().find((folder) => folder.active)
   );
+
+  public fordersFtNotas = computed(() => {
+    return this.folders().map((folder) => {
+      return {
+        ...folder,
+        notes: this._noteService
+          .notas()
+          .filter((nota) => nota.folderId === folder.id && !nota.papelera),
+      };
+    });
+  });
 
   async agregar(label: string): Promise<IFolder> {
     const nuevoFolder: IFolder = {

@@ -30,6 +30,7 @@
 <ion-content [fullscreen]="true" class="ion-padding" color="light">
   <!-- Fecha de creacion de la nota -->
   <ion-item lines="none" color="light">
+    <i slot="start" class="bi bi-clock text-muted"></i>
     <ion-label class="text-muted">{{
       nota().creado | date : "medium"
     }}</ion-label>
@@ -49,7 +50,7 @@
   <!-- Categoria -->
   <div class="categoria my-4 px-3">
     <ion-button color="alert-danger" (click)="escogerFolder()">
-      <i class="bi bi-folder px-2"></i>
+      <i class="bi bi-folder-fill px-2"></i>
       {{ folder().label }}
     </ion-button>
   </div>

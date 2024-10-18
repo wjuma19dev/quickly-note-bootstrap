@@ -22,7 +22,7 @@ export class NotesPage {
 
   // Propiedades
   private _notasArr = this._noteService.notas;
-  public folders = this._folderService.folders;
+  public folders = this._folderService.fordersFtNotas;
   public folderSeleccionado = this._folderService.folderSeleccionado;
   public notas = computed(() =>
     this._notasArr().filter((nota) => !nota.papelera)
@@ -36,6 +36,6 @@ export class NotesPage {
 
   seleccionarFolder(folder: IFolder) {
     this._folderService.seleccionarFolder(folder.id);
-    this.modal.dismiss();
+    // this.modal.dismiss();
   }
 }

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { NoteService } from '../notes/note.service';
 
@@ -8,12 +8,17 @@ import { NoteService } from '../notes/note.service';
   styleUrls: ['./settings.page.scss'],
 })
 export class SettingsPage {
-  logNotasPapelera = inject(NoteService).logNotasPapelera;
+  private _noteService = inject(NoteService);
+  logNotasPapelera = this._noteService.logNotasPapelera;
 
-  logNotasFavorito = inject(NoteService).logNotasFavorito;
+  logNotasFavorito = this._noteService.logNotasFavorito;
 
   // @angular/core
   router = inject(Router);
+
+  public notas = computed(() =>
+    this._noteService.notas().filter((nota) => !nota.papelera)
+  );
 
   redirectTo(url: string) {
     this.router.navigate([url]);

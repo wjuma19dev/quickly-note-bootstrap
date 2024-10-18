@@ -7,8 +7,28 @@
     </ion-toolbar>
   </ion-header>
 
+  <ion-searchbar
+    mode="ios"
+    animated
+    color="light"
+    placeholder="Buscar nota ..."
+    showCancelButton="never"
+    class="barlow-regular"
+    [(ngModel)]="termino"
+  ></ion-searchbar>
+
   @if(notas().length > 0) {
-  <app-list-notes [notas]="notas()" />
+  <ion-list>
+    @for(nota of notas() | papeleraFiltro:termino; track nota.id) {
+    <ion-item detail (click)="abrirNota(nota)">
+      <i slot="start" class="bi bi-journal-text text-morado"></i>
+      <ion-label>
+        <h3 class="fs-6 fw-bold text-capitalize">{{ nota.titulo }}</h3>
+        <p>{{ nota.contenido }}</p>
+      </ion-label>
+    </ion-item>
+    }
+  </ion-list>
   } @else {
   <app-no-notes
     text="Por que siempre querras recuperar esas notas que archivas, sabemos que son importantes para ti, por eso te brindamos la oportunidad de recuperar tus notas enviadas a la papelera, agrega notas y restauralas cuando quieras."

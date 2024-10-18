@@ -19,6 +19,8 @@
     <i slot="start" class="bi bi-1-circle no-visually"></i>
     }
     <ion-label class="text-capitalize">{{ folder().label }}</ion-label>
-    <ion-label slot="end">1</ion-label>
+    <ion-label slot="end">
+      {{ folder().notes?.length }}
+    </ion-label>
   </ion-item>
 </ion-item-sliding>

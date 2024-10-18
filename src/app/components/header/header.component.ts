@@ -1,11 +1,12 @@
-import { Component, input } from "@angular/core";
+import { Component, input } from '@angular/core';
+import { INota } from 'src/app/pages/notes/note.interface';
 
 @Component({
-  selector: "app-header",
-  templateUrl: "./header.component.html",
-  styleUrls: ["./header.component.scss"],
+  selector: 'app-header',
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
   title = input.required<string>();
-  size = input.required<number>();
+  public notas = input.required<INota[]>();
 }

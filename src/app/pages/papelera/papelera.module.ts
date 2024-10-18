@@ -9,6 +9,8 @@ import { PapeleraPageRoutingModule } from './papelera-routing.module';
 import { PapeleraPage } from './papelera.page';
 import { ComponentsModule } from '../../components/components.module';
 import { NotesPageModule } from '../notes/notes.module';
+import { NoNotesComponent } from '../notes/no-notes/no-notes.component';
+import { papeleraFiltroPipe } from './filtro.pipe';
 
 @NgModule({
   imports: [
@@ -17,8 +19,7 @@ import { NotesPageModule } from '../notes/notes.module';
     IonicModule,
     PapeleraPageRoutingModule,
     ComponentsModule,
-    NotesPageModule,
   ],
-  declarations: [PapeleraPage],
+  declarations: [PapeleraPage, NoNotesComponent, papeleraFiltroPipe],
 })
 export class PapeleraPageModule {}
